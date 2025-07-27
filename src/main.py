@@ -14,8 +14,7 @@ def main(page: ft.Page):
 
     content_container = ft.Container(expand=True)
 
-    def route_change(e):
-        print(f"Route changed to: {page.route}")
+    def route_change(_e):
         match page.route:
             case "/":
                 content_container.content = OwnedGamesCollectionPage(page)
@@ -25,14 +24,7 @@ def main(page: ft.Page):
                 content_container.content = SearchPage(page)
         page.update()
 
-    page.add(
-        ft.Column(
-            [
-                content_container,
-            ],
-            expand=True,
-        )
-    )
+    page.add(content_container)
 
     page.on_route_change = route_change
     page.navigation_bar = NavBar(page)
