@@ -1,8 +1,8 @@
-from typing import Generic, List, TypeVar, Type
+from typing import Generic, List, Type, TypeVar
+
 from sqlmodel import Session, select
 
 from src.models.board_game import BoardGame
-
 
 T = TypeVar("T", bound=BoardGame)
 

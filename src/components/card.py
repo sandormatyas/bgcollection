@@ -1,6 +1,6 @@
-import flet as ft
-
 from typing import Callable
+
+import flet as ft
 
 from src.models.board_game import BoardGame
 

@@ -1,11 +1,9 @@
 import flet as ft
 
-from src.components.grid import BoardGameGrid
-from src.models.board_game import OwnedBoardGame, WishlistedBoardGame
 from src.clients.bgg import BGGClient
+from src.components.grid import BoardGameGrid
 from src.components.pages.base import BasePage
-
-
+from src.models.board_game import OwnedBoardGame, WishlistedBoardGame
 from src.repositories.board_games import BoardGameRepository
 
 

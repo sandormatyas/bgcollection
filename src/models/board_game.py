@@ -1,9 +1,9 @@
 from typing import Optional
+from uuid import UUID, uuid4
 
 from sqlmodel import Field, SQLModel
-from src.database import engine
 
-from uuid import uuid4, UUID
+from src.database import engine
 
 
 class BoardGame(SQLModel):

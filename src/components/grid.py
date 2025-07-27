@@ -1,9 +1,7 @@
 import flet as ft
 
-from models.board_game import BoardGame
 from src.components.card import BoardGameCard
-
-
+from src.models.board_game import BoardGame
 from src.repositories.board_games import BoardGameRepository
 
 

@@ -1,8 +1,9 @@
 import flet as ft
+
 from src.clients.bgg import BGGClient
-from src.components.form import SearchField, SearchResult
-from src.database import get_session
 from src.components.pages.base import BasePage
+from src.components.search import SearchField, SearchResult
+from src.database import get_session
 
 
 class SearchPage(BasePage):

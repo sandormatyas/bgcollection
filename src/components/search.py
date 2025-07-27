@@ -1,9 +1,9 @@
 import flet as ft
+from sqlmodel import Session
 
 from models.board_game import OwnedBoardGame, WishlistedBoardGame
 from src.clients.bgg import BGGClient, BGGSearchResult
 from src.repositories.board_games import BoardGameRepository
-from sqlmodel import Session
 
 
 class SearchField(ft.TextField):
@@ -84,6 +84,12 @@ class SearchResult(ft.Container):
             if board_game:
                 self.__owned_repo.add(board_game)  # type: ignore
                 self.game_in_collection = True
+                self.page.open(  # type: ignore
+                    ft.SnackBar(
+                        ft.Text("Game added to your owned games collection!"),
+                        duration=3000,
+                    )
+                )
                 self._render()
 
     def _on_add_to_wishlist(self, e):
@@ -92,6 +98,9 @@ class SearchResult(ft.Container):
             if board_game:
                 self.__wishlist_repo.add(board_game)  # type: ignore
                 self.game_in_wishlist = True
+                self.page.open(  # type: ignore
+                    ft.SnackBar(ft.Text("Game added to your wishlist!"), duration=3000)
+                )
                 self._render()
 
     def _game_in_collection(self):
