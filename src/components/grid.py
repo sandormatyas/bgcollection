@@ -1,5 +1,6 @@
 import flet as ft
 
+from components.details import BoardGameDetails
 from src.components.card import BoardGameCard
 from src.config import settings
 from src.models.board_game import BoardGame
@@ -26,7 +27,12 @@ class BoardGameGrid(ft.GridView):
         Populate the grid with board game cards.
         """
         self.controls = [
-            BoardGameCard(board_game=bg, on_remove=self._remove_item_from_grid)
+            BoardGameCard(
+                page=self.page,  # type: ignore
+                board_game=bg,
+                on_remove=self._remove_item_from_grid,
+                on_click=self._open_board_game_details,
+            )
             for bg in self.__repository.list()
         ]
         self.page.update()  # type: ignore
@@ -38,8 +44,24 @@ class BoardGameGrid(ft.GridView):
         self.__repository.remove(board_game.id)
         self.page.open(  # type: ignore
             ft.SnackBar(
-                ft.Text(f"'{board_game.name}' removed from collection!"),
+                ft.Text(f"'{board_game.name}' removed from collection."),
                 duration=settings.SNACKBAR_DURATION_MS,  # type: ignore
             )
         )
         self._populate_grid()
+
+    def _open_board_game_details(self, board_game: BoardGame):
+        """
+        Open the details page for a board game.
+        """
+        self.page.open(  # type: ignore
+            ft.BottomSheet(
+                BoardGameDetails(self.page, board_game),  # type: ignore
+                size_constraints=ft.BoxConstraints(
+                    max_width=self.page.width - (settings.COMPONENT_PADDING * 4),  # type: ignore
+                    max_height=self.page.window.height  # type: ignore
+                    - (settings.COMPONENT_PADDING * 10),  # type: ignore
+                ),
+                is_scroll_controlled=True,
+            )
+        )
