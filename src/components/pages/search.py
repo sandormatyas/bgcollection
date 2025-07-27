@@ -3,6 +3,7 @@ import flet as ft
 from src.clients.bgg import BGGClient
 from src.components.pages.base import BasePage
 from src.components.search import SearchField, SearchResult
+from src.config import settings
 from src.database import get_session
 
 
@@ -14,7 +15,7 @@ class SearchPage(BasePage):
         self.bgg_client = BGGClient()
 
         self.search_field = SearchField(on_submit=self.on_search_submit)
-        self.results_column = ft.ListView(spacing=10)
+        self.results_column = ft.ListView(spacing=settings.COMPONENT_SPACING)  # type: ignore
         self.loading_indicator = ft.ProgressRing(
             color=ft.Colors.BLUE, tooltip="Loading...", visible=False
         )
@@ -23,7 +24,7 @@ class SearchPage(BasePage):
             [self.search_field, self.loading_indicator, self.results_column],
             alignment=ft.MainAxisAlignment.START,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            spacing=10,
+            spacing=settings.COMPONENT_SPACING,  # type: ignore
         )
         self.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 

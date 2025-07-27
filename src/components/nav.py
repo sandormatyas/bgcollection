@@ -3,7 +3,7 @@ import flet as ft
 
 class NavBar(ft.NavigationBar):
     def __init__(self, page: ft.Page, **kwargs):
-        super().__init__(destinations=[], **kwargs)
+        super().__init__(**kwargs)
         self.page = page
         self.pages = {
             0: {
@@ -26,7 +26,7 @@ class NavBar(ft.NavigationBar):
             },
         }
         for item in self.pages.values():
-            self.destinations.append(
+            self.destinations.append(  # type: ignore
                 ft.NavigationBarDestination(
                     icon=item["icon"],
                     label=item["label"],
@@ -38,4 +38,4 @@ class NavBar(ft.NavigationBar):
     def _on_change(self, e):
         # Why no button specific callback?
         selected_route = self.pages[e.control.selected_index]
-        self.page.go(selected_route["route"])
+        self.page.go(selected_route["route"])  # type: ignore

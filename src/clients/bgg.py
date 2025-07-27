@@ -5,6 +5,7 @@ from xml.etree import ElementTree
 import requests
 from pydantic import BaseModel
 
+from src.config import settings
 from src.models.board_game import BoardGame
 
 logger = logging.getLogger(__name__)
@@ -21,7 +22,7 @@ class BGGSearchResult(BaseModel):
 class BGGClient:
     """Client for interacting with the BoardGameGeek API."""
 
-    BASE_URL = "http://boardgamegeek.com/xmlapi"
+    BASE_URL = settings.get("BGG_API_V1_BASE_URL")  # type: ignore
 
     def search(self, query: str) -> List[BGGSearchResult]:
         """

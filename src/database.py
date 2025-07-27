@@ -1,11 +1,8 @@
-from os import getenv
-
 from sqlmodel import Session, create_engine
 
-APP_DATA_PATH = getenv("FLET_APP_STORAGE_DATA")
-APP_TEMP_PATH = getenv("FLET_APP_STORAGE_TEMP")
-DB_URL = f"sqlite:///{APP_DATA_PATH}/bgcollection.db"
-engine = create_engine(DB_URL)
+from src.config import settings
+
+engine = create_engine(settings.get("DB_URL"), echo=False)  # type: ignore
 
 
 def get_session() -> Session:

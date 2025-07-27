@@ -3,6 +3,7 @@ from sqlmodel import Session
 
 from models.board_game import OwnedBoardGame, WishlistedBoardGame
 from src.clients.bgg import BGGClient, BGGSearchResult
+from src.config import settings
 from src.repositories.board_games import BoardGameRepository
 
 
@@ -10,7 +11,7 @@ class SearchField(ft.TextField):
     def __init__(self, on_submit, **kwargs):
         super().__init__(label="Search Board Games", on_submit=on_submit, **kwargs)
         self.autofocus = True
-        self.width = 300
+        self.width = 500
 
     def clear(self):
         self.value = ""
@@ -30,9 +31,9 @@ class SearchResult(ft.Container):
         self.game_in_collection = self._game_in_collection()
         self.game_in_wishlist = self._game_in_wishlist()
 
-        self.bgcolor = ft.Colors.BLACK54
-        self.border_radius = 10
-        self.padding = 10
+        self.bgcolor = settings.BLACK_SEMI_TRANSPARENT  # type: ignore
+        self.border_radius = settings.COMPONENT_RADIUS  # type: ignore
+        self.padding = settings.COMPONENT_PADDING  # type: ignore
 
         self._render()
 
@@ -47,11 +48,14 @@ class SearchResult(ft.Container):
                     [
                         ft.Text(
                             self.game.name,
-                            size=20,
+                            size=settings.FONT_MEDIUM,  # type: ignore
                             weight=ft.FontWeight.BOLD,
                             overflow=ft.TextOverflow.ELLIPSIS,
                         ),
-                        ft.Text(f"Year Published: {self.game.year_published}"),
+                        ft.Text(
+                            f"Year Published: {self.game.year_published}",
+                            size=settings.FONT_SMALL,  # type: ignore
+                        ),
                     ],
                     alignment=ft.MainAxisAlignment.CENTER,
                     width=600,
@@ -87,7 +91,7 @@ class SearchResult(ft.Container):
                 self.page.open(  # type: ignore
                     ft.SnackBar(
                         ft.Text("Game added to your owned games collection!"),
-                        duration=3000,
+                        duration=settings.SNACKBAR_DURATION_MS,  # type: ignore
                     )
                 )
                 self._render()
@@ -99,7 +103,10 @@ class SearchResult(ft.Container):
                 self.__wishlist_repo.add(board_game)  # type: ignore
                 self.game_in_wishlist = True
                 self.page.open(  # type: ignore
-                    ft.SnackBar(ft.Text("Game added to your wishlist!"), duration=3000)
+                    ft.SnackBar(
+                        ft.Text("Game added to your wishlist!"),
+                        duration=settings.SNACKBAR_DURATION_MS,  # type: ignore
+                    )
                 )
                 self._render()
 

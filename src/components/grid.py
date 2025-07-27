@@ -1,6 +1,7 @@
 import flet as ft
 
 from src.components.card import BoardGameCard
+from src.config import settings
 from src.models.board_game import BoardGame
 from src.repositories.board_games import BoardGameRepository
 
@@ -12,9 +13,9 @@ class BoardGameGrid(ft.GridView):
         super().__init__(**kwargs)
         self.page = page
         self.collection_repository = collection_repository
-        self.padding = 16
-        self.spacing = 10
-        self.runs_count = 4  # Number of columns
+        self.padding = settings.COMPONENT_PADDING  # type: ignore
+        self.spacing = settings.COMPONENT_SPACING  # type: ignore
+        self.runs_count = settings.GRID_COLUMNS  # type: ignore
 
         self.__repository = collection_repository
 
@@ -38,7 +39,7 @@ class BoardGameGrid(ft.GridView):
         self.page.open(  # type: ignore
             ft.SnackBar(
                 ft.Text(f"'{board_game.name}' removed from collection!"),
-                duration=3000,
+                duration=settings.SNACKBAR_DURATION_MS,  # type: ignore
             )
         )
         self._populate_grid()

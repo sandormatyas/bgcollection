@@ -3,6 +3,7 @@ import flet as ft
 from src.clients.bgg import BGGClient
 from src.components.grid import BoardGameGrid
 from src.components.pages.base import BasePage
+from src.config import settings
 from src.models.board_game import OwnedBoardGame, WishlistedBoardGame
 from src.repositories.board_games import BoardGameRepository
 
@@ -16,7 +17,11 @@ class OwnedGamesCollectionPage(BasePage):
 
         self.content = ft.Column(
             [
-                ft.Text("My Board Games", size=24, weight=ft.FontWeight.BOLD),
+                ft.Text(
+                    "My Board Games",
+                    size=settings.FONT_LARGE,  # type: ignore
+                    weight=ft.FontWeight.BOLD,
+                ),
                 BoardGameGrid(
                     page=page,
                     collection_repository=self.collection_repository,
@@ -36,7 +41,11 @@ class WishlistedGamesCollectionPage(BasePage):
 
         self.content = ft.Column(
             [
-                ft.Text("My Wishlist", size=24, weight=ft.FontWeight.BOLD),
+                ft.Text(
+                    "My Wishlist",
+                    size=settings.FONT_LARGE,  # type: ignore
+                    weight=ft.FontWeight.BOLD,
+                ),
                 BoardGameGrid(
                     page=page,
                     collection_repository=self.collection_repository,
