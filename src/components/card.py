@@ -13,11 +13,19 @@ class BoardGameCard(ft.Container):
         self.width = 250
         self.height = 250
         self.border_radius = 10
+
+        self._render()
+
+    def _render(self):
+        """
+        Render the contents of the board game card.
+        This method can be overridden to customize the display.
+        """
         self.content = ft.Stack(
             [
                 ft.Image(
                     src=self.board_game.thumbnail,
-                    fit=ft.ImageFit.COVER,
+                    fit=ft.ImageFit.CONTAIN,
                     width=self.width,
                     height=self.height,
                 ),
@@ -26,7 +34,7 @@ class BoardGameCard(ft.Container):
                         ft.IconButton(
                             icon=ft.Icons.DELETE_OUTLINED,
                             on_click=self._on_remove,
-                            icon_color=ft.Colors.RED,
+                            icon_color=ft.Colors.WHITE,
                             bgcolor=ft.Colors.BLACK54,
                             tooltip="Remove from collection",
                             scale=0.75,
