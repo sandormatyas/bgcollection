@@ -35,4 +35,10 @@ class BoardGameGrid(ft.GridView):
         Remove a board game from the grid.
         """
         self.__repository.remove(board_game.id)
+        self.page.open(  # type: ignore
+            ft.SnackBar(
+                ft.Text(f"'{board_game.name}' removed from collection!"),
+                duration=3000,
+            )
+        )
         self._populate_grid()
