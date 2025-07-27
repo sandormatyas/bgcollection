@@ -1,6 +1,9 @@
 from sqlmodel import Session, create_engine
+from os import getenv
 
-DB_URL = "sqlite:///./bgcollection.db"
+APP_DATA_PATH = getenv("FLET_APP_STORAGE_DATA")
+APP_TEMP_PATH = getenv("FLET_APP_STORAGE_TEMP")
+DB_URL = f"sqlite:///{APP_DATA_PATH}/bgcollection.db"
 engine = create_engine(DB_URL)
 
 
