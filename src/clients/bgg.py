@@ -72,7 +72,7 @@ class BGGClient:
         results = []
         for bg in root.findall("boardgame"):
             _id = bg.get("objectid")
-            name = bg.findtext("name[@primary='true']")
+            name = bg.findtext("name")
             year_published_elem = bg.findtext("yearpublished")
 
             if _id is not None and name is not None:
