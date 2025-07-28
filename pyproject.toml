@@ -32,11 +32,6 @@ copyright = "Copyright (C) 2025 by Flet"
 [tool.flet.app]
 path = "src"
 
-[tool.uv]
-dev-dependencies = [
-    "flet[all]==0.28.3",
-]
-
 [tool.poetry]
 package-mode = false
 
@@ -44,3 +39,8 @@ package-mode = false
 flet = {extras = ["all"], version = "0.28.3"}
 ruff = "^0.12.5"
 pre-commit = "^4.2.0"
+
+[tool.uv]
+dev-dependencies = [
+    "flet[all]==0.28.3",
+]
