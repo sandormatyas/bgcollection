@@ -3,7 +3,7 @@ name = "bgcollection"
 version = "0.1.0"
 description = "bgcollection is a Python app built with Flet to catalog your board game collection."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 authors = [
     { name = "Matyas Sandor", email = "sandormatyas7@gmail.com" }
 ]
