@@ -13,19 +13,19 @@ This project was created as part of the 2025 [boot.dev](https://boot.dev) Hackat
 The following is required to run this app:
 
 - python (>= 3.12)
-- [poetry](https://python-poetry.org/) package manager (can be isntalled via python)
+- [poetry](https://python-poetry.org/) package manager (can be installed via python)
 
 
 ## Installation
 
 ### Option 1: Using poetry
 
-If you alread have poetry installed you can create a new venv using and install the dependencies in it.
+If you already have poetry installed you can create a new venv using and install the dependencies in it.
 
 Create virtual environment:
 
 ```sh
-# replace 'python3.12' with your python executeable
+# replace 'python3.12' with your python executable
 poetry env use python3.12
 ```
 
@@ -42,7 +42,7 @@ If you don't have poetry installed you can set it up inside a python venv and us
 Create python virtual environment:
 
 ```sh
-# replace 'python3.12' with your python executeable
+# replace 'python3.12' with your python executable
 python3.12 -m venv .venv
 ```
 
