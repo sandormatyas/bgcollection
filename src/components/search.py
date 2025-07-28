@@ -67,12 +67,14 @@ class SearchResult(ft.Container):
                             if self.game_in_collection
                             else ft.Icons.MY_LIBRARY_ADD_OUTLINED,
                             on_click=self._on_add_to_collection,
+                            tooltip="Add to Collection",
                         ),
                         ft.IconButton(
                             icon=ft.Icons.BOOKMARK_ADDED
                             if self.game_in_wishlist
                             else ft.Icons.BOOKMARK_ADD_OUTLINED,
                             on_click=self._on_add_to_wishlist,
+                            tooltip="Add to Wishlist",
                         ),
                     ],
                     alignment=ft.MainAxisAlignment.END,
