@@ -3,7 +3,7 @@ from uuid import UUID, uuid4
 
 from sqlmodel import Field, SQLModel
 
-from src.database import engine
+from database import engine
 
 
 class BoardGame(SQLModel):

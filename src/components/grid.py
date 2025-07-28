@@ -1,10 +1,10 @@
 import flet as ft
 
+from components.card import BoardGameCard
 from components.details import BoardGameDetails
-from src.components.card import BoardGameCard
-from src.config import settings
-from src.models.board_game import BoardGame
-from src.repositories.board_games import BoardGameRepository
+from config import settings
+from models.board_game import BoardGame
+from repositories.board_games import BoardGameRepository
 
 
 class BoardGameGrid(ft.GridView):

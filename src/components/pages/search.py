@@ -1,10 +1,10 @@
 import flet as ft
 
-from src.clients.bgg import BGGClient
-from src.components.pages.base import BasePage
-from src.components.search import SearchField, SearchResult
-from src.config import settings
-from src.database import get_session
+from clients.bgg import BGGClient
+from components.pages.base import BasePage
+from components.search import SearchField, SearchResult
+from config import settings
+from database import get_session
 
 
 class SearchPage(BasePage):

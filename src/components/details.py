@@ -2,8 +2,8 @@ import html
 
 import flet as ft
 
+from config import settings
 from models.board_game import BoardGame
-from src.config import settings
 
 
 class BoardGameDetails(ft.Container):

@@ -2,7 +2,7 @@ from typing import Generic, List, Type, TypeVar
 
 from sqlmodel import Session, select
 
-from src.models.board_game import BoardGame
+from models.board_game import BoardGame
 
 T = TypeVar("T", bound=BoardGame)
 
@@ -54,7 +54,7 @@ class BoardGameRepository(Generic[T]):
         """
         Get a default instance of the repository with a sqlite session.
         """
-        from src.database import get_session
+        from database import get_session
 
         session = get_session()
         return cls(session, model=model)

@@ -2,8 +2,8 @@ from typing import Callable
 
 import flet as ft
 
-from src.config import settings
-from src.models.board_game import BoardGame
+from config import settings
+from models.board_game import BoardGame
 
 
 class BoardGameCard(ft.Container):

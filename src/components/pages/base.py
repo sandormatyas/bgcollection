@@ -1,6 +1,6 @@
 import flet as ft
 
-from src.config import settings
+from config import settings
 
 
 class BasePage(ft.Container):

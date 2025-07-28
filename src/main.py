@@ -1,11 +1,11 @@
 import flet as ft
 
-from src.components.nav import NavBar
-from src.components.pages.collection import (
+from components.nav import NavBar
+from components.pages.collection import (
     OwnedGamesCollectionPage,
     WishlistedGamesCollectionPage,
 )
-from src.components.pages.search import SearchPage
+from components.pages.search import SearchPage
 
 
 def main(page: ft.Page):

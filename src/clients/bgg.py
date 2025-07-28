@@ -1,17 +1,18 @@
 import logging
+from dataclasses import dataclass
 from typing import List, Optional
 from xml.etree import ElementTree
 
 import requests
-from pydantic import BaseModel
 
-from src.config import settings
-from src.models.board_game import BoardGame
+from config import settings
+from models.board_game import BoardGame
 
 logger = logging.getLogger(__name__)
 
 
-class BGGSearchResult(BaseModel):
+@dataclass
+class BGGSearchResult:
     """Model for a search result from BoardGameGeek."""
 
     id: str

@@ -1,10 +1,10 @@
 import flet as ft
 from sqlmodel import Session
 
+from clients.bgg import BGGClient, BGGSearchResult
+from config import settings
 from models.board_game import OwnedBoardGame, WishlistedBoardGame
-from src.clients.bgg import BGGClient, BGGSearchResult
-from src.config import settings
-from src.repositories.board_games import BoardGameRepository
+from repositories.board_games import BoardGameRepository
 
 
 class SearchField(ft.TextField):
